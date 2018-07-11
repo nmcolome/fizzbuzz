@@ -4,9 +4,11 @@ require 'minitest/pride'
 require '../lib/fizzbuzz.rb'
 
 class FizzBuzzTest < Minitest::Test
-  def test_it_exists
-    fizzbuzz = FizzBuzz.new
+  def setup
+    @fizzbuzz = FizzBuzz.new
+  end
 
-    assert_instance_of FizzBuzz, fizzbuzz
+  def test_it_exists
+    assert_instance_of FizzBuzz, @fizzbuzz
   end
 end
