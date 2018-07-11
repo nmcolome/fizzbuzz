@@ -7,23 +7,21 @@
 =end
 
 class FizzBuzz
-  attr_accessor :range
+  attr_reader :range
 
   def initialize
     @range = (1..100).to_a
   end
 
   def transform
-    @range.map do |element|
-      if element % 3 == 0 && element % 5 == 0
-        element = "FizzBuzz"
-      elsif element % 3 == 0
-        element = "Fizz"
-      elsif element % 5 == 0
-        element = "Buzz"
-      else
-        element
-      end
+    transformed = []
+    @range.each do |number|
+      element = ""
+      element += "Fizz" if number % 3 == 0
+      element += "Buzz" if number % 5 == 0
+      element = number if number % 3 != 0 && number % 5 != 0
+      transformed << element
     end
+    transformed
   end
 end

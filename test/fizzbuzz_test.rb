@@ -41,7 +41,8 @@ class FizzBuzzTest < Minitest::Test
   def test_it_prints_numbers_for_any_other_case
     first_15 = [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"]
     last_three = [98, "Fizz", "Buzz"]
- 
+
+    assert_equal 100, @fizz.length
     assert_equal 19, @fizz[18]
     assert_equal 52, @fizz[51]
     assert_equal 97, @fizz[96]
