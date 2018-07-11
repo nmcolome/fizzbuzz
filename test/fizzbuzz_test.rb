@@ -5,15 +5,15 @@ require '../lib/fizzbuzz.rb'
 
 class FizzBuzzTest < Minitest::Test
   def setup
-    @fizzbuzz = FizzBuzz.new
+    @fizzbuzz = FizzBuzz.new(100)
     @fizz = @fizzbuzz.transform
   end
 
-  def test_it_exists
+  def skip test_it_exists
     assert_instance_of FizzBuzz, @fizzbuzz
   end
 
-  def test_it_prints_1_to_100
+  def skip test_it_prints_1_to_100
     assert_equal 100, @fizzbuzz.range.length
     assert_equal 15, @fizzbuzz.range[14]
     assert_equal 43, @fizzbuzz.range[42]
@@ -48,5 +48,24 @@ class FizzBuzzTest < Minitest::Test
     assert_equal 97, @fizz[96]
     assert_equal first_15, @fizz[0..14]
     assert_equal last_three, @fizz[-3..-1]
+  end
+
+  def test_it_creates_any_range
+    twenty = FizzBuzz.new(20)
+    five_hund = FizzBuzz.new(500)
+    thousand = FizzBuzz.new(1000)
+    twenty_fizzedbuzzed = twenty.transform
+    five_hund_fizzedbuzzed = five_hund.transform
+    thousand_fizzedbuzzed = thousand.transform
+    twenty_answer = [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]
+    five_hund_sample = ["Buzz", "Fizz", 442, 443, "Fizz", "Buzz", 446, "Fizz", 448, 449, "FizzBuzz"]
+    thousand_sample = ["FizzBuzz", 706, 707, "Fizz", 709, "Buzz", "Fizz", 712, 713, "Fizz", "Buzz"]
+
+    assert_equal 20, twenty.range.length
+    assert_equal 500, five_hund.range.length
+    assert_equal 1000, thousand.range.length
+    assert_equal twenty_answer, twenty_fizzedbuzzed
+    assert_equal five_hund_sample, five_hund_fizzedbuzzed[439..449]
+    assert_equal thousand_sample, thousand_fizzedbuzzed[704..714]
   end
 end
