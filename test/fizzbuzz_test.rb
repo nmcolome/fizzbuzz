@@ -25,4 +25,11 @@ class FizzBuzzTest < Minitest::Test
     assert_equal "Fizz", fizz[50]
     assert_equal "Fizz", fizz[98]
   end
+
+  def test_prints_buzz_for_multiples_of_5
+    fizz = @fizzbuzz.transform
+    assert_equal "Buzz", fizz[4]
+    assert_equal "Buzz", fizz[49]
+    assert_equal "Buzz", fizz[99]
+  end
 end

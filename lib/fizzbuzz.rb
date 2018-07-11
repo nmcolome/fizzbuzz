@@ -17,6 +17,8 @@ class FizzBuzz
     @range.map do |element|
       if element % 3 == 0
         element = "Fizz"
+      elsif element % 5 == 0
+        element = "Buzz"
       end
     end
   end
